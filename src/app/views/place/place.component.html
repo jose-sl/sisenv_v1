@@ -1,0 +1,65 @@
+<div>
+  <h1>Lugares</h1>
+
+  <table class="left-button">
+    <tr>
+      <td>
+        <button class="program-btn" (click)="newFormDetail('Nuevo Lugar', 'plc-modal')">
+          Agregar <img src="../../../assets/plus-3-16.ico">
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <table class="center">
+    <tr>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Ver</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+    <tr *ngFor="let plc of places">
+      <td>{{ plc.name }}</td>
+      <td>{{ plc.address }}</td>
+      <td>
+        <button class="view-btn" (click)="openFormDetail('Ver Lugar', plc, 'plc-modal')">
+          <img src="../../../assets/eye-16.ico"> Ver
+        </button>
+      </td>
+      <td>
+        <button class="edit-btn" (click)="openFormDetail('Editar Lugar', plc, 'plc-modal')">
+          <img src="../../../assets/edit-16.ico"> Editar
+        </button>
+      </td>
+      <td>
+        <button class="delete-btn" (click)="openFormDetail('Eliminar Lugar', plc, 'plc-modal')">
+          <img src="../../../assets/delete-16.ico"> Eliminar
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="places.length === 0">
+      <td colspan="5">No se encontraron registros</td>
+    </tr>
+  </table>
+</div>
+
+<view-modal id="plc-modal">
+  <h1>{{ modalAction }}</h1>
+  <table class="center-modal">
+    <tr>
+      <td>Nombre:</td>
+      <td><input type="text" [(ngModel)]="place.name" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td>Dirección:</td>
+      <td><input type="text" [(ngModel)]="place.address" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="center-modal-button">
+        <button class="delete-btn" (click)="closeFormDetail('plc-modal')">Cerrar</button>
+        <button class="view-btn" (click)="aceptFormDetail(place, 'plc-modal')">Aceptar</button>
+      </td>
+    </tr>
+  </table>
+</view-modal>

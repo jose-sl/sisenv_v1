@@ -1,0 +1,88 @@
+<div>
+  <h1>Usuarios</h1>
+
+  <table class="left-button">
+    <tr>
+      <td>
+        <button class="program-btn" (click)="newFormDetail('Nuevo Usuario', 'usr-modal')">
+          Agregar <img src="../../../assets/plus-3-16.ico">
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <table class="center">
+    <tr>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Estado</th>
+      <th>Perfil</th>
+      <th>Usuario</th>
+      <th>Ver</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+    <tr *ngFor="let usr of users">
+      <td>{{ usr.name }}</td>
+      <td>{{ usr.age }}</td>
+      <td>{{ usr.status }}</td>
+      <td>{{ usr.rol }}</td>
+      <td>{{ usr.nic }}</td>
+      <td>
+        <button class="view-btn" (click)="openFormDetail('Ver Usuario', usr, 'usr-modal')">
+          <img src="../../../assets/eye-16.ico"> Ver
+        </button>
+      </td>
+      <td>
+        <button class="edit-btn" (click)="openFormDetail('Editar Usuario', usr, 'usr-modal')">
+          <img src="../../../assets/edit-16.ico"> Editar
+        </button>
+      </td>
+      <td>
+        <button class="delete-btn" (click)="openFormDetail('Eliminar Usuario', usr, 'usr-modal')">
+          <img src="../../../assets/delete-16.ico"> Eliminar
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="users.length === 0">
+      <td colspan="8">No se encontraron registros</td>
+    </tr>
+  </table>
+</div>
+
+<view-modal id="usr-modal">
+  <h1>{{ modalAction }}</h1>
+  <table class="center-modal">
+    <tr>
+      <td>Nombre:</td>
+      <td><input type="text" [(ngModel)]="user.name" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td>Edad:</td>
+      <td><input type="text" [(ngModel)]="user.age" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td>Perfil:</td>
+      <td>
+        <select name="perfil" id="perfil" [(ngModel)]="user.rol">
+          <option value="Administrador" ng-selected="user.rol == 'Administrador'">Administrador</option>
+          <option value="Piloto" ng-selected="user.rol == 'Piloto'">Piloto</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Usuario:</td>
+      <td><input type="text" [(ngModel)]="user.nic" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td>Contraseña:</td>
+      <td><input type="text" [(ngModel)]="user.pass" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="center-modal-button">
+        <button class="delete-btn" (click)="closeFormDetail('usr-modal')">Cerrar</button>
+        <button class="view-btn" (click)="aceptFormDetail(user, 'usr-modal', 'Disponible')">Aceptar</button>
+      </td>
+    </tr>
+  </table>
+</view-modal>

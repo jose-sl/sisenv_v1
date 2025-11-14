@@ -1,0 +1,119 @@
+div, h1, table, th, td, input, button {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #0a3d62;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+table.center, table.center-modal {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #003459;
+}
+
+table.left-button {
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+
+th {
+  background-color: #7fc8c9;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  background-color: #ffffff;
+}
+
+tr:nth-child(even) td {
+  background-color: #e8f0f2;
+}
+
+tr:hover td {
+  background-color: #d0e5e8;
+  transition: background-color 0.3s;
+}
+
+button {
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  background: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+
+button img {
+  width: 16px;
+  height: 16px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+button.program-btn,
+button.edit-btn,
+button.view-btn {
+  border: 2px solid #428bca;
+  color: #428bca;
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+button.program-btn:hover,
+button.edit-btn:hover,
+button.view-btn:hover {
+  border-color: #3069a1;
+  color: #3069a1;
+}
+
+button.delete-btn {
+  border: 2px solid #c82333;
+  color: #c82333;
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+button.delete-btn:hover {
+  border-color: #922026;
+  color: #922026;
+}
+
+.center-modal {
+  margin-top: 15px;
+  width: 80%;
+}
+
+.center-modal select,
+.center-modal input {
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.center-modal-button {
+  text-align: center;
+  margin-top: 15px;
+}

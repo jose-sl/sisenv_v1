@@ -1,0 +1,67 @@
+<div>
+  <h1>Paquetes</h1>
+
+  <table class="left-button">
+    <tr>
+      <td>
+        <button class="program-btn" (click)="newFormDetail('Nuevo Paquete', 'pck-modal')">
+          Agregar <img src="../../../assets/plus-3-16.ico">
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <table class="center">
+    <tr>
+      <th>Nombre</th>
+      <th>Peso</th>
+      <th>Estado</th>
+      <th>Ver</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+    <tr *ngFor="let pckg of packages">
+      <td>{{ pckg.name }}</td>
+      <td>{{ pckg.weight }}</td>
+      <td>{{ pckg.status }}</td>
+      <td>
+        <button class="view-btn" (click)="openFormDetail('Ver Paquete', pckg, 'pck-modal')">
+          <img src="../../../assets/eye-16.ico"> Ver
+        </button>
+      </td>
+      <td>
+        <button class="edit-btn" (click)="openFormDetail('Editar Paquete', pckg, 'pck-modal')">
+          <img src="../../../assets/edit-16.ico"> Editar
+        </button>
+      </td>
+      <td>
+        <button class="delete-btn" (click)="openFormDetail('Eliminar Paquete', pckg, 'pck-modal')">
+          <img src="../../../assets/delete-16.ico"> Eliminar
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="packages.length === 0">
+      <td colspan="6">No se encontraron registros</td>
+    </tr>
+  </table>
+</div>
+
+<view-modal id="pck-modal">
+  <h1>{{ modalAction }}</h1>
+  <table class="center-modal">
+    <tr>
+      <td>Nombre:</td>
+      <td><input type="text" [(ngModel)]="package.name" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td>Peso:</td>
+      <td><input type="text" [(ngModel)]="package.weight" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="center-modal-button">
+        <button class="delete-btn" (click)="closeFormDetail('pck-modal')">Cerrar</button>
+        <button class="view-btn" (click)="aceptFormDetail(package, 'pck-modal', 'Pendiente')">Aceptar</button>
+      </td>
+    </tr>
+  </table>
+</view-modal>

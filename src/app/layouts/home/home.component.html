@@ -1,0 +1,29 @@
+<div>
+    <table class="center">
+        <tr>
+            <td>
+                <h1>SISENV: Sistema De Envíos</h1>
+            </td>
+            <td class="center_td">
+                <h1></h1>
+                <h1>Usuario:&nbsp;{{userLogin.name}}</h1>
+                <h1>{{userLogin.rol}}</h1>
+            </td>
+        </tr>
+    </table>
+</div>
+    <button *ngIf="userLogin.rol === 'Administrador'" routerLink="/views/package">Paquetes&nbsp;
+        <img src="../../../assets/package-16.ico"></button>
+    <button *ngIf="userLogin.rol === 'Administrador'" routerLink="/views/place">Lugares&nbsp;
+        <img src="../../../assets/place-16.ico"></button>
+    <button *ngIf="userLogin.rol === 'Administrador'" routerLink="/views/transport">Transportes&nbsp;
+        <img src="../../../assets/car-16.ico"></button>
+    <button *ngIf="userLogin.rol === 'Administrador'" routerLink="/views/user">Usuarios&nbsp;
+        <img src="../../../assets/user-5-16.ico"></button>
+    <button style="background-color: #FAD7A0" routerLink="/views/shipping">Programación de Envíos&nbsp;
+        <img src="../../../assets/send-file-16.ico"></button>
+    <button *ngIf="userLogin.rol === 'Administrador'" routerLink="/views/registry">Bitácora&nbsp;
+        <img src="../../../assets/literature-16.ico"></button>
+    <button class="exit_btn" routerLink="/login">Salir&nbsp;
+        <img src="../../../assets/door-8-16.ico"></button>
+    <router-outlet></router-outlet>

@@ -1,0 +1,55 @@
+<div>
+  <div class="header">
+    <h1>SISENV: Sistema De Envíos</h1>
+  </div>
+
+  <table class="center">
+    <tr>
+      <td>
+        <input
+          name="userNic"
+          placeholder="Usuario"
+          type="text"
+          [(ngModel)]="userNic"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input
+          name="password"
+          placeholder="Contraseña"
+          type="password"
+          [(ngModel)]="password"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button (click)="login()" type="submit">Ingresar</button>
+      </td>
+    </tr>
+    <tr>
+      <td><p *ngIf="errorState">* {{ errorMessage }}</p></td>
+    </tr>
+  </table>
+
+  <!-- Sección de redes sociales -->
+  <div class="social-section">
+    <h3>Nuestras Redes Sociales</h3>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+        <img src="assets/icons/facebook.jpg" alt="Facebook" />
+      </a>
+      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+        <img src="assets/icons/instagram.jpg" alt="Instagram" />
+      </a>
+      <a href="https://www.x.com" target="_blank" aria-label="X">
+        <img src="assets/icons/x.jpg" alt="X" />
+      </a>
+      <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+        <img src="assets/icons/linkedin.jpg" alt="LinkedIn" />
+      </a>
+    </div>
+  </div>
+</div>

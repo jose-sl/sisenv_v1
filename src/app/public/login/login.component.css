@@ -1,0 +1,135 @@
+div {
+  text-align: center;
+  font-family: "Poppins", Arial, sans-serif;
+  margin-top: 60px;
+  color: #333;
+  background-color: #f6f8fa;
+}
+
+.header {
+  background-color: #6fc0b8;
+  padding: 20px 0;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 0;
+  color: #003459;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+table.center {
+  margin: 40px auto 0 auto;
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 250px;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #6fc0b8;
+  box-shadow: 0 0 6px rgba(111, 192, 184, 0.6);
+}
+
+button {
+  width: 270px;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+p {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.social-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.social-section h3 {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a img {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  object-fit: cover;
+  filter: brightness(0.95) grayscale(25%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.1) grayscale(0%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 480px) {
+  table.center {
+    width: 90%;
+    padding: 20px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  button {
+    width: 100%;
+  }
+
+  .social-icons {
+    gap: 15px;
+  }
+
+  .social-icons a img {
+    width: 38px;
+    height: 38px;
+  }
+}

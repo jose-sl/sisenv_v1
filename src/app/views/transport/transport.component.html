@@ -1,0 +1,76 @@
+<div>
+  <h1>Transportes</h1>
+
+  <table class="left-button">
+    <tr>
+      <td>
+        <button class="program-btn" (click)="newFormDetail('Nuevo Transporte', 'trs-modal')">
+          Agregar <img src="../../../assets/plus-3-16.ico">
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <table class="center">
+    <tr>
+      <th>Tipo</th>
+      <th>Placa</th>
+      <th>Peso Máximo</th>
+      <th>Ver</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+    <tr *ngFor="let trs of transports">
+      <td>{{ trs.type }}</td>
+      <td>{{ trs.number_ident }}</td>
+      <td>{{ trs.max_weight }}</td>
+      <td>
+        <button class="view-btn" (click)="openFormDetail('Ver Transporte', trs, 'trs-modal')">
+          <img src="../../../assets/eye-16.ico"> Ver
+        </button>
+      </td>
+      <td>
+        <button class="edit-btn" (click)="openFormDetail('Editar Transporte', trs, 'trs-modal')">
+          <img src="../../../assets/edit-16.ico"> Editar
+        </button>
+      </td>
+      <td>
+        <button class="delete-btn" (click)="openFormDetail('Eliminar Transporte', trs, 'trs-modal')">
+          <img src="../../../assets/delete-16.ico"> Eliminar
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="transports.length === 0">
+      <td colspan="6">No se encontraron registros</td>
+    </tr>
+  </table>
+</div>
+
+<view-modal id="trs-modal">
+  <h1>{{ modalAction }}</h1>
+  <table class="center-modal">
+    <tr>
+      <td>Tipo:</td>
+      <td>
+        <select name="type" id="type" [(ngModel)]="transport.type">
+          <option value="Carro" ng-selected="transport.type == 'Carro'">Carro</option>
+          <option value="Panel" ng-selected="transport.type == 'Panel'">Panel</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Placa:</td>
+      <td><input type="text" [(ngModel)]="transport.number_ident" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td>Peso Máximo:</td>
+      <td><input type="text" [(ngModel)]="transport.max_weight" class="modal-text" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="center-modal-button">
+        <button class="delete-btn" (click)="closeFormDetail('trs-modal')">Cerrar</button>
+        <button class="view-btn" (click)="aceptFormDetail(transport, 'trs-modal')">Aceptar</button>
+      </td>
+    </tr>
+  </table>
+</view-modal>

@@ -1,0 +1,124 @@
+<div>
+  <h1>Programación de Envíos</h1>
+
+  <table class="left-button">
+    <tr>
+      <td>
+        <button *ngIf="userLogin.rol === 'Administrador'" class="program-btn" (click)="newFormDetail('Nuevo Envío', 'shp-modal')">
+          Programar <img src="../../../assets/plus-3-16.ico">
+        </button>
+
+        <button *ngIf="userLogin.rol === 'Piloto' && userLogin.status !== 'En Ruta'" class="start-btn" (click)="shippingState('En Ruta', 'En Ruta')">
+          Iniciar Ruta <img src="../../../assets/arrow-32-16.ico">
+        </button>
+
+        <button *ngIf="userLogin.rol === 'Piloto' && userLogin.status === 'En Ruta'" class="finish-btn" (click)="shippingState('Disponible', 'Finalizado')">
+          Finalizar Ruta <img src="../../../assets/check-mark-16.ico">
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <table class="center">
+    <tr>
+      <th>Paquete</th>
+      <th>Dirección de Salida</th>
+      <th>Dirección de Llegada</th>
+      <th>Transporte</th>
+      <th>Piloto</th>
+      <th>Estado</th>
+      <th *ngIf="userLogin.rol === 'Administrador'">Ver</th>
+      <th *ngIf="userLogin.rol === 'Administrador'">Editar</th>
+      <th *ngIf="userLogin.rol === 'Administrador'">Eliminar</th>
+      <th *ngIf="userLogin.rol === 'Piloto' && userLogin.status === 'En Ruta'">Devuelto</th>
+    </tr>
+    <tr *ngFor="let shp of shippings">
+      <td>{{ shp.package[0].name }}</td>
+      <td>{{ shp.placeOrigin[0].name }}-{{ shp.placeOrigin[0].address }}</td>
+      <td>{{ shp.placeDestiny[0].name }}-{{ shp.placeDestiny[0].address }}</td>
+      <td>{{ shp.transport[0].type }}-{{ shp.transport[0].number_ident }}</td>
+      <td>{{ shp.pilot[0].name }}</td>
+      <td>{{ shp.status }}</td>
+      <td *ngIf="userLogin.rol === 'Administrador'">
+        <button class="view-btn" (click)="openFormDetail('Ver Envío', shp, 'shp-modal')">
+          <img src="../../../assets/eye-16.ico"> Ver
+        </button>
+      </td>
+      <td *ngIf="userLogin.rol === 'Administrador'">
+        <button class="edit-btn" (click)="openFormDetail('Editar Envío', shp, 'shp-modal')">
+          <img src="../../../assets/edit-16.ico"> Editar
+        </button>
+      </td>
+      <td *ngIf="userLogin.rol === 'Administrador'">
+        <button class="delete-btn" (click)="openFormDetail('Eliminar Envío', shp, 'shp-modal')">
+          <img src="../../../assets/delete-16.ico"> Eliminar
+        </button>
+      </td>
+      <td *ngIf="userLogin.rol === 'Piloto' && userLogin.status === 'En Ruta'">
+        <button class="returned-btn" (click)="shippingReturned(shp, 'No Entregado', 'Finalizado R')">
+          <img src="../../../assets/x-mark-16.ico"> Devuelto
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="shippings.length === 0">
+      <td colspan="10">No se encontraron registros</td>
+    </tr>
+  </table>
+</div>
+
+<view-modal id="shp-modal">
+  <h1>{{modalAction}}</h1>
+  <table class="center-modal">
+    <tr>
+      <td>Paquete:</td>
+      <td *ngIf="modalAction !== 'Nuevo Envío'">
+        <select name="paquete" id="paquete" [(ngModel)]="shipping.packageId">
+          <option *ngFor="let package of packages" value="{{package._id}}" ng-selected="shipping.packageId == 'package._id'">{{package.name}}</option>
+        </select>
+      </td>
+      <td *ngIf="modalAction === 'Nuevo Envío'">
+        <select name="paquete" id="paquete" [(ngModel)]="shipping.packageId">
+          <option *ngFor="let package of packagesSelect" value="{{package._id}}" ng-selected="shipping.packageId == 'package._id'">{{package.name}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Dirección de Salida:</td>
+      <td>
+        <select name="lugarOrigen" id="lugarOrigen" [(ngModel)]="shipping.placeOriginId">
+          <option *ngFor="let place of places" value="{{place._id}}" ng-selected="shipping.placeOriginId == 'place._id'">{{place.name}}-{{place.address}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Dirección de Llegada:</td>
+      <td>
+        <select name="lugarDestino" id="lugarDestino" [(ngModel)]="shipping.placeDestinyId">
+          <option *ngFor="let place of places" value="{{place._id}}" ng-selected="shipping.placeDestinyId == 'place._id'">{{place.name}}-{{place.address}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Transporte:</td>
+      <td>
+        <select name="transporte" id="transporte" [(ngModel)]="shipping.transportId">
+          <option *ngFor="let transport of transports" value="{{transport._id}}" ng-selected="shipping.transportId == 'transport._id'">{{transport.type}}-{{transport.number_ident}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Piloto:</td>
+      <td>
+        <select name="piloto" id="piloto" [(ngModel)]="shipping.pilotId">
+          <option *ngFor="let user of usersSelect" value="{{user._id}}" ng-selected="shipping.pilotId == 'user._id'">{{user.name}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="5" class="center-modal-button">
+        <button class="view-btn" (click)="aceptFormDetail(shipping, 'shp-modal', 'Programado', 'En Espera');">Aceptar</button>
+        <button class="delete-btn" (click)="closeFormDetail('shp-modal');">Cerrar</button>
+      </td>
+    </tr>
+  </table>
+</view-modal>

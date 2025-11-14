@@ -1,0 +1,77 @@
+div, h1, table, th, td, button {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table.center {
+  width: 100%;
+  background: linear-gradient(90deg, #7fc8c9, #5da3a6);
+  color: #003459;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0;
+  height: 60px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+td {
+  padding: 0 20px;
+  vertical-align: middle;
+}
+
+table.center h1:first-child {
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.center_td {
+  text-align: right;
+  font-size: 6px;
+  font-weight: 500;
+  color: #003459;
+  line-height: 1.2;
+}
+
+button {
+  border: 2px solid #7fc8c9;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+  margin: 5px;
+  background: none;
+  color: inherit;
+}
+
+button.exit_btn {
+  border: 2px solid #c82333;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+  margin: 5px;
+  background: none;
+  color: inherit;
+}
+
+button img {
+  width: 16px;
+  height: 16px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  border-color: #5da3a6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}

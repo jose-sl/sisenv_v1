@@ -1,0 +1,19 @@
+<div>
+  <h1>Bitácora</h1>
+
+  <table class="center">
+    <tr>
+      <th>Usuario</th>
+      <th>Módulo</th>
+      <th>Acción</th>
+    </tr>
+    <tr *ngFor="let rgt of registries">
+      <td>{{ rgt.user }}</td>
+      <td>{{ rgt.module }}</td>
+      <td>{{ rgt.action }}</td>
+    </tr>
+    <tr *ngIf="registries.length === 0">
+      <td colspan="3">No se encontraron registros</td>
+    </tr>
+  </table>
+</div>
